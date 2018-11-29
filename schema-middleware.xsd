@@ -1,0 +1,137 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="device" type="Device"/>
+	
+	<xsd:complexType name="Device">
+		<xsd:sequence>
+            <xsd:element name="ID" type="xsd:int" minOccurs="0" maxOccurs="1"/><!-- device::ID -->
+            <!-- device::type -->
+            <!--<xsd:element name="type" type="device-type" minOccurs="1" maxOccurs="1"/>-->
+            <!-- device::place -->
+            <xsd:element name="place" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <!-- device::sensor -->
+            <xsd:element name="sensor" type="base-sensor" minOccurs="0" maxOccurs="1"/>
+            <!-- device::actuator -->
+            <xsd:element name="actuator" type="base-actuator" minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="base-sensor"><!-- base_sensor -->
+          <xsd:sequence>
+          	<!-- base_sensor::bin_sensor -->
+            <xsd:element name="binary" type="binary-sensor" minOccurs="0" maxOccurs="1"/>
+            <!-- base_sensor::int_sensor -->
+            <xsd:element name="integer" type="integer-sensor" minOccurs="0" maxOccurs="1"/>
+            <!-- base_sensor::float_sensor -->
+            <xsd:element name="float" type="float-sensor" minOccurs="0" maxOccurs="1"/>
+            <!-- base_sensor::string_sensor -->
+            <xsd:element name="string" type="string-sensor" minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="binary-sensor"><!-- int_actuator -->
+          <xsd:sequence>
+          	<xsd:element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          	<!-- int_actuator::value_int -->
+            <xsd:element name="value" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+            <!-- int_actuator::set_int -->
+            <xsd:element name="get-value" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+          <xsd:attribute name="type" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="integer-sensor"><!-- int_actuator -->
+          <xsd:sequence>
+          	<xsd:element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          	<!-- int_actuator::value_int -->
+            <xsd:element name="value" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+            <!-- int_actuator::set_int -->
+            <xsd:element name="get-value" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+          <xsd:attribute name="type" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="float-sensor"><!-- int_actuator -->
+          <xsd:sequence>
+          	<xsd:element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          	<!-- int_actuator::value_int -->
+            <xsd:element name="value" type="xsd:float" minOccurs="1" maxOccurs="1"/>
+            <!-- int_actuator::set_int -->
+            <xsd:element name="get-value" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+          <xsd:attribute name="type" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="string-sensor"><!-- int_actuator -->
+          <xsd:sequence>
+          	<xsd:element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          	<!-- int_actuator::value_int -->
+            <xsd:element name="value" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <!-- int_actuator::set_int -->
+            <xsd:element name="get-value" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+          <xsd:attribute name="type" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="base-actuator"><!-- base_actuator -->
+          <xsd:sequence>
+            <!-- base_sensor::bin_sensor -->
+            <xsd:element name="binary" type="binary-actuator" minOccurs="0" maxOccurs="1"/>
+            <!-- base_sensor::int_sensor -->
+            <xsd:element name="integer" type="integer-actuator" minOccurs="0" maxOccurs="1"/>
+            <!-- base_sensor::float_sensor -->
+            <xsd:element name="float" type="float-actuator" minOccurs="0" maxOccurs="1"/>
+            <!-- base_sensor::string_sensor -->
+            <xsd:element name="string" type="string-actuator" minOccurs="0" maxOccurs="1"/>
+          </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="binary-actuator"><!-- int_actuator -->
+          <xsd:sequence>
+          	<xsd:element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          	<!-- int_actuator::value_int -->
+            <xsd:element name="value" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+            <!-- int_actuator::set_int -->
+            <xsd:element name="set-value" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+          <xsd:attribute name="type" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="integer-actuator"><!-- int_actuator -->
+          <xsd:sequence>
+          	<xsd:element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <!-- int_actuator::value_int -->
+            <xsd:element name="value" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+            <!-- int_actuator::set_int -->
+            <xsd:element name="set-value" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+          <xsd:attribute name="type" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="float-actuator"><!-- float_actuator -->
+          <xsd:sequence>
+          	<xsd:element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          	<!-- int_actuator::value_int -->
+            <xsd:element name="value" type="xsd:float" minOccurs="1" maxOccurs="1"/>
+            <!-- int_actuator::set_int -->
+            <xsd:element name="set-value" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+          <xsd:attribute name="type" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="string-actuator"><!-- int_actuator -->
+          <xsd:sequence>
+          	<xsd:element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          	<!-- int_actuator::value_int -->
+            <xsd:element name="value" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <!-- int_actuator::set_int -->
+            <xsd:element name="set-value" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+          <xsd:attribute name="type" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+	<xsd:simpleType name="device-type"><!-- device_type -->
+      <xsd:restriction base="xsd:string">
+        <xsd:enumeration value="SENSOR"/><!-- SENSOR --><!-- = 0 -->
+        <xsd:enumeration value="ACTUATOR"/><!-- ACTUATOR --><!-- = 1 -->
+      </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>
+
+
+
+
